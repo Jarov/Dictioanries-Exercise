@@ -8,28 +8,25 @@ namespace _04.FixEmails
     {
         static void Main(string[] args)
         {
-            string action = "";
             Dictionary<string, string> emailList = new Dictionary<string, string>();
 
-            while (action != "stop")
+            for (int i = 0; ; i++)
             {
-                action = Console.ReadLine();
+                string inPut = Console.ReadLine();
 
-                if (action == "stop")
+                if (inPut == "stop")
                 {
                     foreach (var contact in emailList)
                         Console.WriteLine($"{contact.Key} -> {contact.Value}");
                     break;
                 }
-                else
-                {
-                    string email = Console.ReadLine();
 
-                    bool add = email.EndsWith("us", StringComparison.OrdinalIgnoreCase) || email.EndsWith("uk", StringComparison.OrdinalIgnoreCase);
+                string email = Console.ReadLine();
 
-                    if (!add)
-                        emailList[action] = email;
-                }
+                bool add = email.EndsWith(".us", StringComparison.OrdinalIgnoreCase) || email.EndsWith(".uk", StringComparison.OrdinalIgnoreCase);
+
+                if (!add)
+                    emailList[inPut] = email;
             }
         }
     }
